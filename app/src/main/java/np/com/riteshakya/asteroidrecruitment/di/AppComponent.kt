@@ -10,11 +10,11 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [
-        AppModule::class,
-        AndroidSupportInjectionModule::class,
-        ActivityBuilderModule::class
-    ]
+        modules = [
+            AppModule::class,
+            AndroidSupportInjectionModule::class,
+            ActivityBuilderModule::class
+        ]
 )
 interface AppComponent : AndroidInjector<RecruitmentApp> {
 
