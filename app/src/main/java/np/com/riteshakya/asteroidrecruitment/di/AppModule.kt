@@ -9,10 +9,11 @@ import dagger.Module
 import dagger.Provides
 import np.com.riteshakya.asteroidrecruitment.RecruitmentApp
 import np.com.riteshakya.asteroidrecruitment.core.di.AppViewModelFactory
+import np.com.riteshakya.asteroidrecruitment.data.datasource.nasa.repository.Nasa
 import javax.inject.Provider
 import javax.inject.Singleton
 
-@Module(includes = [AppModule.Supporting::class])
+@Module(includes = [AppModule.Supporting::class, Nasa.Repositories::class])
 abstract class AppModule {
     @Binds
     abstract fun bindApplication(app: RecruitmentApp): Application
