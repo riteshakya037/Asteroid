@@ -88,3 +88,4 @@ As this was a time constraint task I didn't have much time to think over everyth
 - Add a lot of commenting/documentation as we all know how much of a help that is. 
 - Work on error handling for when the list already has items cause right now its either the error screen of the list. I know its a easy fix but I'm kinda running out of time to be honest.
 - Use a shared view model and fetch from the already existing data rather than re-fetch the details from the server. 
+- I reused a generic list adapter and I haven't had a chance to convert it to use binding. This may be a great addition. 

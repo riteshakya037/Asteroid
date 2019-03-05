@@ -46,8 +46,10 @@ class AsteroidListViewModel(
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess {
                 state.onNext(ResultState.Success)
-                canLoadMore = maxLoadCount != ++currentLoadCount
-                if (setLastSuccessDate) lastSuccessDate = date
+                if (setLastSuccessDate) {
+                    lastSuccessDate = date
+                    canLoadMore = maxLoadCount != ++currentLoadCount
+                }
             }
             .doOnSubscribe { state.onNext(ResultState.Loading) }
             .onErrorReturn {
