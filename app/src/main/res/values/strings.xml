@@ -2,7 +2,15 @@
     <string name="error_no_connection">Something went wrong. Make sure you are connected to the internet</string>
     <string name="error_unknown">Unknown error. Please try again later</string>
     <string name="error_response">We are experiencing some technical difficulties please try again later</string>
+
     <string name="retry">Retry</string>
     <string name="failure_title">Ups!</string>
-
+    <string name="is_hazard">Hazardous</string>
+    <string name="is_not_hazard">No Hazard</string>
+    <string name="is_hazard_subtitle">Collision course with Earth</string>
+    <string name="is_not_hazard_subtitle">Object is not on collision course with Earth</string>
+    <string name="estimated_diameter">Estimated Diameter</string>
+    <string name="absolute_brightness">Absolute Brightness</string>
+    <string name="share">Share</string>
+    <string name="open_on_jpl_nasa_gov">Open on JPL.NASA.GOV</string>
 </resources>

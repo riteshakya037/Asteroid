@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="hazard"
+            type="Boolean" />
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="magnitude"
+            type="Double" />
+
+        <variable
+            name="diameter"
+            type="np.com.riteshakya.asteroidrecruitment.repository.neo.model.Diameter" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="openInBrowserCallback"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:statusBarBackground="@color/colorPrimaryDark">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/AppTheme.PopupOverlay"
+                app:navigationIcon="@drawable/ic_arrow_back"
+                app:title="@{title}" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.Group
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{!loading}"
+                app:constraint_referenced_ids="openInBrowserBtn,magnitudeLayout,diameterLayout,hazardLayout" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{loading}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <np.com.riteshakya.asteroidrecruitment.ui.components.ItemDetailView
+                android:id="@+id/hazardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_earth"
+                android:subtitle="@{hazard ? @string/is_hazard_subtitle : @string/is_not_hazard_subtitle}"
+                android:title="@{hazard ? @string/is_hazard : @string/is_not_hazard}"
+                app:error="@{hazard}"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <np.com.riteshakya.asteroidrecruitment.ui.components.ItemDetailView
+                android:id="@+id/magnitudeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_magnitude"
+                android:subtitle="@string/absolute_brightness"
+                android:title="@{String.format(`%.2f`, magnitude)}"
+                app:layout_constraintTop_toBottomOf="@id/hazardLayout" />
+
+            <np.com.riteshakya.asteroidrecruitment.ui.components.ItemDetailView
+                android:id="@+id/diameterLayout"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_diameter"
+                android:subtitle="@string/estimated_diameter"
+                android:title="@{String.format(`%.2f`, diameter.min) + ` - ` + String.format(`%.2f`, diameter.max) + `km`}"
+                app:layout_constraintTop_toBottomOf="@id/magnitudeLayout" />
+
+            <Button
+                android:id="@+id/openInBrowserBtn"
+                style="@style/Widget.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/list_item_padding"
+                android:onClick="@{openInBrowserCallback}"
+                android:text="@string/open_on_jpl_nasa_gov"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

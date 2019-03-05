@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/inset_list_background"
+    android:paddingTop="@dimen/list_item_padding"
+    android:paddingBottom="@dimen/list_item_padding">
+
+
+    <ImageView
+        android:id="@+id/imageIv"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/list_item_padding"
+        android:tint="@color/icon_tint_state"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/titleTv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_earth" />
+
+    <TextView
+        android:id="@+id/titleTv"
+        style="@style/SingleLineText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/list_item_padding"
+        android:textAppearance="@style/TextAppearance.Title"
+        app:layout_constraintBottom_toTopOf="@id/subtitleTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageIv"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/lorem[2]" />
+
+    <TextView
+        android:id="@+id/subtitleTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Subtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/titleTv"
+        app:layout_constraintStart_toStartOf="@id/titleTv"
+        app:layout_constraintTop_toBottomOf="@id/titleTv"
+        tools:text="@tools:sample/lorem[4]" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

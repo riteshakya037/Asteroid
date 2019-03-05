@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph_main" app:startDestination="@id/asteroidListFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/asteroidListFragment">
 
-    <fragment android:id="@+id/asteroidListFragment"
-              android:name="np.com.riteshakya.asteroidrecruitment.feature.neo.ui.AsteroidListFragment"
-              android:label="AsteroidListFragment"
-              tools:layout="@layout/fragment_asteroid_list"/>
+    <fragment
+        android:id="@+id/asteroidListFragment"
+        android:name="np.com.riteshakya.asteroidrecruitment.feature.neo.ui.AsteroidListFragment"
+        android:label="AsteroidListFragment"
+        tools:layout="@layout/fragment_asteroid_list" />
+    <fragment
+        android:id="@+id/asteroidDetailFragment"
+        android:name="np.com.riteshakya.asteroidrecruitment.feature.neo.ui.AsteroidDetailFragment"
+        android:label="AsteroidDetailFragment"
+        tools:layout="@layout/fragment_asteroid_detail">
+        <argument
+            android:name="neoId"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
+
+    <action
+        android:id="@+id/showNeoDetails"
+        app:destination="@id/asteroidDetailFragment" />
 </navigation>

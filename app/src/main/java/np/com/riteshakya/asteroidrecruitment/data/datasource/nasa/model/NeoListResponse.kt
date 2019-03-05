@@ -6,26 +6,26 @@ import java.lang.reflect.Type
 
 
 data class NeoListResponse(
-        @SerializedName("links")
-        val links: Links,
-        @SerializedName("element_count")
-        val elementCount: Int,
-        @SerializedName("near_earth_objects")
-        val nearEarthObjects: List<NeoModel>
+    @SerializedName("links")
+    val links: Links,
+    @SerializedName("element_count")
+    val elementCount: Int,
+    @SerializedName("near_earth_objects")
+    val nearEarthObjects: List<NeoModel>
 ) {
     class Deserializer : JsonDeserializer<NeoListResponse> {
         @Throws(JsonParseException::class)
         override fun deserialize(
-                json: JsonElement?,
-                typeOfT: Type?,
-                context: JsonDeserializationContext?
+            json: JsonElement?,
+            typeOfT: Type?,
+            context: JsonDeserializationContext?
         ): NeoListResponse {
             val jsonObject = json as JsonObject
             val neoJson = jsonObject.get("near_earth_objects").asJsonObject
             val nearEarthObjects = neoJson.entrySet().map { map ->
                 neoJson.get(map.key).asJsonArray.map { neoJsonObject ->
                     (context?.deserialize(neoJsonObject, NeoModel::class.java)
-                            ?: NeoModel()).apply {
+                        ?: NeoModel()).apply {
                         closeApproachDate = map.key
                     }
                 }
@@ -33,9 +33,9 @@ data class NeoListResponse(
 
 
             return NeoListResponse(
-                    context?.deserialize(json, Links::class.java) ?: Links(),
-                    jsonObject.get("element_count")?.asInt ?: 10,
-                    nearEarthObjects
+                context?.deserialize(json, Links::class.java) ?: Links(),
+                jsonObject.get("element_count")?.asInt ?: 10,
+                nearEarthObjects
             )
         }
     }

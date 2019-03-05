@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ItemDetailView">
+        <attr name="android:title" format="string" />
+        <attr name="android:subtitle" format="string" />
+        <attr name="android:src" format="reference" />
+        <attr name="error" format="boolean" />
+    </declare-styleable>
+</resources>

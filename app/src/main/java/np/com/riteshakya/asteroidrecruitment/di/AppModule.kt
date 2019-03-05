@@ -26,8 +26,8 @@ abstract class AppModule {
 
         @Provides
         fun provideViewModelFactory(
-                providers: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+            providers: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
         ): ViewModelProvider.Factory =
-                AppViewModelFactory(providers)
+            AppViewModelFactory(providers)
     }
 }

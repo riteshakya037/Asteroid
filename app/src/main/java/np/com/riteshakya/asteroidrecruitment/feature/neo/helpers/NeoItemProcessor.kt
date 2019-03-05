@@ -13,6 +13,6 @@ class NeoItemProcessor : ItemPreProcessor<BaseModel> {
     override fun doProcess(@NonNull input: List<BaseModel>): List<BaseModel> {
         return input.filter { it is NearEarthObject }.map {
             it as? NearEarthObject ?: throw RuntimeException()
-        }.distinct().sortedBy { it.closeApproachDate }
+        }.sortedBy { it.closeApproachDate }
     }
 }

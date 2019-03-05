@@ -11,6 +11,6 @@ abstract class MainActivityModule {
     @ContributesAndroidInjector(modules = [FragmentModules::class])
     abstract fun provideMainActivityFactory(): MainActivity
 
-    @Module(includes = [AsteroidListModule::class])
+    @Module(includes = [AsteroidListModule::class, AsteroidDetailModule::class])
     class FragmentModules
 }

@@ -12,22 +12,22 @@ import javax.inject.Singleton
 @Singleton
 class NasaNeoRepository
 @Inject constructor(
-        private val neoService: NeoService
+    private val neoService: NeoService
 ) : NeoRepository {
 
     override fun getNeoList(start: String): Single<List<NearEarthObject>> {
         return neoService.getNeoList(start)
-                .subscribeOn(Schedulers.io())
-                .map {
-                    it.nearEarthObjects.map { newObject -> newObject.transform() }
-                }
+            .subscribeOn(Schedulers.io())
+            .map {
+                it.nearEarthObjects.map { newObject -> newObject.transform() }
+            }
     }
 
     override fun getNeoDetail(id: String): Single<NearEarthObject> {
         return neoService.getNeoDetail(id)
-                .subscribeOn(Schedulers.io())
-                .map {
-                    it.transform()
-                }
+            .subscribeOn(Schedulers.io())
+            .map {
+                it.transform()
+            }
     }
 }

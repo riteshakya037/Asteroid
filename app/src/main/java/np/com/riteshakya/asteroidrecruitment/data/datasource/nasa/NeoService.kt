@@ -7,7 +7,7 @@ import javax.inject.Singleton
 @Singleton
 class NeoService
 @Inject constructor(
-        retrofit: Retrofit
+    retrofit: Retrofit
 ) {
     private val nasaApi by lazy { retrofit.create(NasaApi::class.java) }
 

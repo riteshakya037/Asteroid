@@ -8,8 +8,8 @@ import okhttp3.Response
 
 class ConnectionInterceptor(private val context: Context) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response =
-            context.isConnected.let {
-                if (it) chain.proceed(chain.request())
-                else throw NoConnectivityException()
-            }
+        context.isConnected.let {
+            if (it) chain.proceed(chain.request())
+            else throw NoConnectivityException()
+        }
 }
