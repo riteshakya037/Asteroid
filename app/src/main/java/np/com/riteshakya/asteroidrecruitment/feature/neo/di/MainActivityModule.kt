@@ -12,7 +12,5 @@ abstract class MainActivityModule {
     abstract fun provideMainActivityFactory(): MainActivity
 
     @Module(includes = [AsteroidListModule::class])
-    class FragmentModules {
-
-    }
+    class FragmentModules
 }

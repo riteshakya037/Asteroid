@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="status"
+            type="np.com.riteshakya.asteroidrecruitment.core.helpers.ResultState" />
+
+        <variable
+            name="retryCallback"
+            type="android.view.View.OnClickListener" />
+    </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -20,5 +32,26 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{!status.error}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <np.com.riteshakya.asteroidrecruitment.ui.components.InfiniteScrollRecyclerView
+                android:id="@+id/noeList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_item_neo" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <include
+            layout="@layout/layout_error"
+            app:retryCallback="@{retryCallback}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:status="@{status}"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

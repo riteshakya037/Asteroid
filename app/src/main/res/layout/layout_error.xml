@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="status"
+            type="np.com.riteshakya.asteroidrecruitment.core.helpers.ResultState" />
+
+        <variable
+            name="retryCallback"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/list_item_padding"
+        android:visibility="@{!status.success,default=gone}">
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{status.error}"
+            app:constraint_referenced_ids="retryBtn,imageView,errorSubtitle,errorTitle"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_message_alert"
+            android:tint="#C2C2C2"
+            app:layout_constraintBottom_toTopOf="@id/retryBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/errorTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/list_item_padding"
+            android:gravity="center"
+            android:text="@string/failure_title"
+            android:textAppearance="@style/TextAppearance.Heading"
+            app:layout_constraintBottom_toTopOf="@id/errorSubtitle"
+            app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+        <TextView
+            android:id="@+id/errorSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/list_item_padding"
+            android:gravity="center"
+            android:text="@{status.failure}"
+            android:textAppearance="@style/TextAppearance.Subtitle"
+            app:layout_constraintTop_toBottomOf="@id/errorTitle"
+            tools:layout_editor_absoluteX="16dp"
+            tools:text="@tools:sample/lorem[20]" />
+
+        <Button
+            android:id="@+id/retryBtn"
+            style="@style/Widget.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{retryCallback}"
+            android:text="@string/retry"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

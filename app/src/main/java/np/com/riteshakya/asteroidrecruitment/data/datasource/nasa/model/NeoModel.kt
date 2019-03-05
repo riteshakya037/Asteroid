@@ -4,8 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 class NeoModel {
 
-    @SerializedName("links")
-    var links: Links = Links()
     @SerializedName("id")
     var id: String = UNDEFINED
     @SerializedName("neo_reference_id")
@@ -45,13 +43,5 @@ class NeoModel {
 
     companion object {
         const val UNDEFINED = ""
-        fun empty() = NeoModel().apply {
-            links = Links()
-            name = ""
-            nasaJplUrl = ""
-            absoluteMagnitudeH = 0.0
-            estimatedDiameter = DistanceUnit()
-            isPotentiallyHazardousAsteroid = false
-        }
     }
 }

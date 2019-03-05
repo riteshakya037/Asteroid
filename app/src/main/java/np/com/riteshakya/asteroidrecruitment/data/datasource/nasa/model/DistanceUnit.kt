@@ -6,11 +6,5 @@ class DistanceUnit {
 
     @SerializedName("kilometers")
     var kilometers: DistanceModel = DistanceModel()
-    @SerializedName("meters")
-    var meters: DistanceModel = DistanceModel()
-    @SerializedName("miles")
-    var miles: DistanceModel = DistanceModel()
-    @SerializedName("feet")
-    var feet: DistanceModel? = DistanceModel()
 
 }
